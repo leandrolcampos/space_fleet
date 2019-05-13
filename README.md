@@ -1,6 +1,6 @@
 # Space Fleet
 
-Este repositório contém a [solução](https://github.com/leandrolcampos/space_fleet/blob/master/solução.pdf) que eu apresentei para o primeiro [trabalho prático](https://github.com/leandrolcampos/space_fleet/blob/master/problema.pdf) da disciplina "Projetos e Análise de Algoritmos", que é ofertada pelo Programa de Pós-Graduação em Ciência da Computação da Universidade Federal de Minas Gerais.
+Este repositório contém a [solução](https://github.com/leandrolcampos/space_fleet/blob/master/solução.pdf) que eu apresentei para o primeiro [trabalho prático](https://github.com/leandrolcampos/space_fleet/blob/master/problema.pdf) da disciplina "Projeto e Análise de Algoritmos", que é ofertada pelo Programa de Pós-Graduação em Ciência da Computação da Universidade Federal de Minas Gerais.
 
 O problema proposto neste trabalho é ambientado em um cenário fictício no qual duas raças estão em guerra por toda a galáxia. Como membros de uma delas, nós recebemos a missão de desenvolver um programa capaz de identificar, classificar e contar todas as naves da frota inimiga e estimar o tempo de vantagem para a realização de um ataque surpresa. Este programa tem como entrada uma massa de dados relacionados à estrutura do sistema de teleportes e aos estados de ocupação inicial e planejado de cada embarcação inimiga.
 
