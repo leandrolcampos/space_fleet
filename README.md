@@ -4,21 +4,26 @@ Este repositório contém a [solução](https://github.com/leandrolcampos/space_
 
 O problema proposto neste trabalho é ambientado em um cenário fictício no qual duas raças estão em guerra por toda a galáxia. Como membros de uma delas, nós recebemos a missão de desenvolver um programa capaz de identificar, classificar e contar todas as naves da frota inimiga e estimar o tempo de vantagem para a realização de um ataque surpresa. Este programa tem como entrada uma massa de dados relacionados à estrutura do sistema de teleportes e aos estados de ocupação inicial e planejado de cada embarcação inimiga.
 
-Para compilar o programa utilizando o GCC, execute os seguintes comandos:
+Para compilar o programa utilizando o GCC, execute o seguinte comando:
 
 ```bash
-chmod +x ./compilar.sh
 ./compilar.sh
 ```
 
-E para executá-lo, execute os seguintes outros comandos:
+E para executá-lo, execute o seguinte outro comando:
 
 ```bash
-chmod +x ./executar.sh
 ./executar.sh [arquivo de entrada] [arquivo de saída]
 ```
 
 Os parâmetros `[arquivo de entrada]` e `[arquivo de saída]` se referem, respectivamente, ao arquivo existente que contém os dados de entrada e ao arquivo que será criado e no qual serão escritos os dados de saída do programa. A pasta [test\in](https://github.com/leandrolcampos/space_fleet/blob/master/test/in) contém 12 exemplos de arquivo de entrada. Os arquivos de saída correspondentes estão na pasta [test\out](https://github.com/leandrolcampos/space_fleet/blob/master/test/out).
+
+No caso de erro de permissão ao tentar executar os comandos acima, tente conceder permissão de execução aos arquivos de script:
+
+```bash
+chmod +x ./compilar.sh
+chmod +x ./executar.sh
+```
 
 Tanto a compilação quanto a execução foram testadas em uma máquina com as seguintes configurações:
 
