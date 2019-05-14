@@ -32,7 +32,7 @@
 #define FLEET_FRIGATE   1   /* fragata */
 #define FLEET_BOMBER    2   /* bombardeiro */
 #define FLEET_TRANSPORT 3   /* transportador */
-#define FLEET_NTYPE     4   /* número de tipos de nave */
+#define FLEET_NTYPE     4   /* quantidades de tipos de nave */
 
 typedef struct Fleet Fleet;
 typedef struct Ship Ship;
@@ -54,19 +54,19 @@ struct Ship {       /* lista de naves de uma frota */
     int32_t npost;  /* número de postos de combate na nave */
     Ship *next;     /* próxima nave na lista */
 
-    /* atributos da árvore que representa a nave na floresta de Busca em 
-       Profundidade */
+    /* atributos da árvore que representa a nave na floresta de busca em 
+       profundidade */
     int32_t root;   /* raíz */
     int32_t height; /* altura */
 };
 
 struct Post {       /* posto de combate */
     Ship *ship;     /* nave a que pertence */
-    Teleport *tp;   /* lista dos teleportes possíveis a partir desse posto */
+    Teleport *tp;   /* lista dos teleportes possíveis a partir deste posto */
 
     /* atributos do vértice que representa o posto na árvore da nave */
     int32_t pi;     /* pai do posto */
-    int32_t depth;  /* nível do posto */
+    int32_t depth;  /* profundidade do posto */
     int8_t group;   /* grupo do posto */
 
     /* atributo utilizado na decomposição SQRT da árvore da nave e na posterior
@@ -116,23 +116,23 @@ int32_t fleet_scan(Fleet *fleet);
 /*
  * fleet_stat: retorna a contagem de naves por tipo. A função assume que fleet 
  * aponta para um objeto Fleet que já foi explorado por fleet_scan() e que stat 
- * aponta para um vetor de tamanho FLEET_NTYPE. Para i = 0, ..., FLEET_NTYPE, a 
- * função grava a contagem de naves do tipo i em stat[i]. Em caso de sucesso,
+ * aponta para um vetor de tamanho FLEET_NTYPE. Para i = 0, ..., FLEET_NTYPE-1,
+ * a função grava a contagem de naves do tipo i em stat[i]. Em caso de sucesso,
  * ela retorna o número total de naves. Em caso de falha, ela retorna:
  *  -1: se fleet não é um objeto Fleet válido e já explorado; ou
  *  -2: se stat é NULL.
  */
 int32_t fleet_stat(Fleet *fleet, int32_t *stat);
 
-/* fleet_adtm: calcula um limitante inferior não trivial para o tempo de 
+/* fleet_adtm: calcula uma cota inferior não-trivial para o tempo de 
  * vantagem em relação a uma frota. A função assume que fleet aponta para um 
  * objeto Fleet que já foi explorado por fleet_scan(); que os vetores apontados 
  * por p1 e p2 têm tamanho npost; que o tripulante no posto p1[i] deve retornar
- * ao seu posto correto p2[i] para todo i = 0, ..., npost; que para cada posto i
- * da frota existe um e apenas um par (j, k) tal que i = p1[j] = p2[k]; que um 
+ * ao seu posto correto p2[i] para todo i = 0, ..., npost-1; que para cada posto
+ * i da frota existe um e apenas um par (j, k) tal que i = p1[j] = p2[k]; que um 
  * teleporte demora uma unidade de tempo; e que só pode ser realizado um único
- * teleporte por vez em cada nave. Em caso de sucesso, a funcão retorna um 
- * limitante inferior. Em caso de falha, ela returna:
+ * teleporte por vez em cada nave. Em caso de sucesso, a funcão retorna uma 
+ * cota inferior >= 0. Em caso de falha, ela returna:
  *  -1: se fleet não é um objeto Fleet válido;
  *  -2: se p1[i] ou p2[i] está fora dos limites do vetor de postos de combate
  *      para algum i; ou
