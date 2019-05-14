@@ -206,7 +206,7 @@ int64_t fleet_adtm(Fleet *fleet, int32_t *p1, int32_t *p2)
             if (r[ship->id] == 0 && s[ship->id] < m) m = s[ship->id];
             
             if (m <= 1) {
-                /* m <= 1 é o menor limitante inferior não trivial possível */
+                /* m <= 1 é a menor cota inferior possível */
                 return 0;
             }
         }
@@ -282,7 +282,7 @@ void ship_visit(Fleet *fleet, Ship *ship)
         u = stack[--idx];
         post = &fleet->post[u];
 
-        /* percorre a lista de adjacências do posto combate u */
+        /* percorre a lista de adjacências do posto de combate u */
         ntp = 0;
         for (Teleport *tp = post->tp; tp != NULL; tp = tp->next) {
             ntp++;
@@ -353,7 +353,7 @@ int64_t get_dist(Fleet *fleet, int32_t p1, int32_t p2)
     if (ship != post2->ship) return FLEET_INF;
 
     switch (ship->type)
-    {   /* Para entender as fórmulas, consulte a documentação */
+    {   /* para entender as fórmulas, consulte a documentação */
         case FLEET_SCOUT:
         case FLEET_FRIGATE:
             if (post1->jump == ND) 
